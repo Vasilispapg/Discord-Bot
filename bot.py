@@ -79,20 +79,23 @@ async def show(ctx):
     await ctx.send(f'-End of queue-')    
 
 
+
 @bot.command(aliases=['h'])
 async def more_help(ctx):
     await ctx.send(f"""-Add songs to your playlist 
--join the bot on your voice chat"\n" 
--send (.n) to play the next song"\n" 
-Commands"\n" 
-.n/.next -> playing the next song"\n" 
-.j/.join ->join the chat"\n" 
-.a/.add ->add songs on queue"\n" 
-.l/.leave -> leave the voice chat"\n"
-.r/.resume ->resume the song"\n"
-.s/.stop ->stop the song"\n"
-.p/ .pause ->pause the song"\n"
-.show -> shows the queue""")    
+-join the bot on your voice chat\n 
+-send (.n) to play the next song\n
+.n/.next -> playing the next song\n 
+.j/.join ->join the chat\n 
+.a/.add ->add songs on queue\n
+.l/.leave -> leave the voice chat\n
+.r/.resume ->resume the song\n
+.s/.stop ->stop the song\n
+.p/ .pause ->pause the song\n
+.c / .clear -> clear the queue\n
+.q / .queue -> (.q num) will play the num_th song\n
+.changeprefix -> to change the prefix for commands (default '.'(dot))\n
+.show -> shows the queue""")       
 
 file = None
 @bot.command(aliases=['a'])
@@ -248,4 +251,3 @@ def play_next(ctx):
         asyncio.run_coroutine_threadsafe(ctx.send("No more songs in queue."),loop=None)
     
 bot.run(TOKEN)
-
