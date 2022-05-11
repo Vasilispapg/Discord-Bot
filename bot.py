@@ -118,7 +118,7 @@ async def more_help(ctx):
     .c / .clear -> clear the queue\n
     .q / .queue -> (.q num) will play the num_th song\n
     .changeprefix -> to change the prefix for commands (default '.'(dot))\n
-    .show -> shows the queue""")       
+    .show -> shows the queue""")
 
 file = None
 @bot.command(aliases=['a'],help='Adds song in queue')
@@ -247,9 +247,9 @@ async def queue(ctx):
         return
     voice.pause()
     if(num+2<len(songs)):
-        voice.play(discord.FFmpegPCMAudio(executable="ffmpeg/bin/ffmpeg.exe", source=songs[num]),after= lambda e : play_next(ctx))
+        voice.play(discord.FFmpegPCMAudio(executable="ffmpeg.exe", source=songs[num]),after= lambda e : play_next(ctx))
     else:
-        voice.play(discord.FFmpegPCMAudio(executable="ffmpeg/bin/ffmpeg.exe", source=songs[num]))
+        voice.play(discord.FFmpegPCMAudio(executable="ffmpeg.exe", source=songs[num]))
     song=songs[num].split('/')
     songs=songs[num+1:] #na svisei kai ayto poy paizei
     await ctx.send('Now Playing: '+song[6])
@@ -302,5 +302,5 @@ with open('the_last_channel.json','r') as f:
     for x in the_last_channel:
         the_last_channel[x]=None
 
-keep_alive()
+#keep_alive()
 bot.run(TOKEN)
